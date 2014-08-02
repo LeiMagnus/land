@@ -1,0 +1,77 @@
+<html>
+<title>How the f**k can I be this land-dry?</title>
+<head>
+<style>
+body
+{
+background-color:black;
+}
+
+body, input, td
+{
+color:white;
+font-size:28pt;
+font-family:gulim;
+}
+
+table
+{
+margin:175px;
+}
+
+input
+{
+color:black;
+}
+</style>
+<script>
+function factorial(n){
+	if(n<=1){
+		return 1;
+	}
+	return n*factorial(n-1);
+}
+
+function setInit(){
+	document.getElementById('n').value=60;
+	document.getElementById('l').value=24;
+	document.getElementById('c').value=7;
+	document.getElementById('k').value=3;
+}
+
+function run(){
+	n=document.getElementById('n').value*1;
+	l=document.getElementById('l').value*1;
+	c=document.getElementById('c').value*1;
+	k=document.getElementById('k').value*1;
+	if(isNaN(n) || isNaN(l) || isNaN(c) || isNaN(k)){
+		return 'What? o.O';
+	}else if(k>l || k>c || k>n || (n==l&&c!=k) || (n==c&&l!=k) || (n-c<l-k)){
+		return 0;
+	}else if(l>n || c>n || n%1!=0 || l%1!=0 || c%1!=0 || k%1!=0 || n<0 || l<0 || c<0 || k<0){
+		return 'What? o.O';
+	}
+	return factorial(c)*factorial(n-c)*factorial(l)*factorial(n-l)/(factorial(n)*factorial(l-k)*factorial(k)*factorial(c-k)*factorial((n-l)-(c-k)));
+}
+</script>
+</head>
+<body onload='setInit();document.getElementById("p").value=run();' onkeyup='document.getElementById("p").value=run();'>
+<h2 style='text-align:center;'>How the f**k can I be this land-dry?</h2>
+<table>
+<tr>
+<td>Cards in deck: </td><td><input type='text' id='n'></input></td>
+</tr>
+<tr>
+<td>Land in deck: </td><td><input type='text' id='l'></input></td>
+</tr>
+<tr>
+<td>Cards drawn: </td><td><input type='text' id='c'></input></td>
+</tr>
+<tr>
+<td>Land drawn: </td><td><input type='text' id='k'></input></td>
+</tr><tr><td>&nbsp;</td></tr><tr>
+<td>Probability: </td><td><input type='text' id='p'></input></td>
+</tr>
+</table>
+</body>
+</html>
